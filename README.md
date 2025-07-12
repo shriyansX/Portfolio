@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my skills, experience, and pro
 
 ## 🌐 Live Demo
 
-**View the live portfolio:** [https://portfolio-o3n9.vercel.app/](https://portfolio-o3n9.vercel.app/)
+**View the live portfolio:** [https://portfolio-dusky-three-89.vercel.app/](https://portfolio-dusky-three-89.vercel.app/)
 
 ## 📋 About
 
@@ -58,7 +58,7 @@ PORTFOLIO/
 3. The portfolio will load locally
 
 ### Deployment
-The portfolio is deployed on Vercel and can be accessed at: [https://portfolio-o3n9.vercel.app/](https://portfolio-o3n9.vercel.app/)
+The portfolio is deployed on Vercel and can be accessed at: [https://portfolio-dusky-three-89.vercel.app/](https://portfolio-dusky-three-89.vercel.app/)
 
 ## 📧 Contact
 
