@@ -180,3 +180,105 @@ contactForm.addEventListener('submit', async (e) => {
         submitBtn.textContent = originalBtnText;
     }
 });
+
+// Mobile Nav Toggle
+const navToggle = document.querySelector('.nav-toggle');
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        document.documentElement.classList.toggle('nav-open');
+    });
+    // Close nav when clicking a link
+    document.querySelectorAll('nav ul a').forEach(link => link.addEventListener('click', () => {
+        document.documentElement.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+    }));
+}
+
+// Resume Modal Logic
+const resumeModal = document.getElementById('resume-modal');
+const openResumeBtns = document.querySelectorAll('[data-open-resume]');
+const closeResumeBtns = document.querySelectorAll('[data-close-resume]');
+let lastFocusedElement = null;
+
+function openResume() {
+    if (!resumeModal) return;
+    lastFocusedElement = document.activeElement;
+    resumeModal.classList.add('show');
+    resumeModal.setAttribute('aria-hidden', 'false');
+    // Focus first actionable element
+    const focusTarget = resumeModal.querySelector('.modal-actions .btn, [data-close-resume]') || resumeModal;
+    focusTarget.focus({ preventScroll: true });
+    document.body.style.overflow = 'hidden';
+}
+
+function closeResume() {
+    if (!resumeModal) return;
+    resumeModal.classList.remove('show');
+    resumeModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (lastFocusedElement) lastFocusedElement.focus({ preventScroll: true });
+}
+
+openResumeBtns.forEach(btn => btn.addEventListener('click', openResume));
+// Direct listeners (fix close icon not working when clicking inner <i>)
+closeResumeBtns.forEach(btn => btn.addEventListener('click', closeResume));
+
+// Delegated (backdrop + any dynamically added close buttons)
+resumeModal?.addEventListener('click', (e) => {
+    if (e.target.classList.contains('modal-backdrop') || e.target.closest('[data-close-resume]')) {
+        closeResume();
+    }
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resumeModal?.classList.contains('show')) {
+        closeResume();
+    }
+    // Basic focus trap
+    if (e.key === 'Tab' && resumeModal?.classList.contains('show')) {
+        const focusable = resumeModal.querySelectorAll('a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+});
+
+// Animated counters in hero
+const counters = document.querySelectorAll('[data-counter]');
+const counterObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('target'),10) || 0;
+            const suffix = el.getAttribute('data-suffix') || '';
+            const numEl = el.querySelector('.number');
+            let start = 0; const duration = 1400; const startTime = performance.now();
+            function tick(now){
+                const progress = Math.min((now - startTime)/duration,1);
+                const value = Math.floor(progress*target);
+                numEl.textContent = value + suffix;
+                if(progress < 1) requestAnimationFrame(tick); else numEl.textContent = target + suffix;
+            }
+            requestAnimationFrame(tick);
+            counterObserver.unobserve(el);
+        }
+    });
+},{ threshold:0.4 });
+counters.forEach(c=>counterObserver.observe(c));
+
+// Skill bar fill
+const skillBars = document.querySelectorAll('.bar');
+const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            const level = entry.target.getAttribute('data-level');
+            const fill = entry.target.querySelector('.bar-track div');
+            requestAnimationFrame(()=>{ fill.style.width = level + '%'; });
+            barObserver.unobserve(entry.target);
+        }
+    });
+},{ threshold:0.3 });
+skillBars.forEach(b=>barObserver.observe(b));

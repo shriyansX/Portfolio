@@ -25,8 +25,13 @@
     </button>
 
     <!-- Navigation -->
-    <nav role="navigation">
-        <div class="left">Portfolio</div>
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="left" aria-label="Site title">Portfolio</div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
         <ul>
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -34,44 +39,151 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><button class="link-like" data-open-resume>Resume</button></li>
         </ul>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="firstSection">
-        <div class="leftSection">
-            <h1>Hi, I'm <span class="purple">Shriyans Mukherjee</span></h1>
-            <p class="subtitle">Crafting digital experiences with code and creativity</p>
-            <span id="element"></span>
-            <div class="cta-buttons">
-                <a href="#projects" class="cta-primary">View My Work</a>
-                <a href="#contact" class="cta-secondary">Get in Touch</a>
+    <section id="home" class="hero">
+        <canvas id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-inner container">
+            <div class="hero-content">
+                <p class="intro-badge"><span class="dot"></span> Available for opportunities</p>
+                <h1 class="headline">Hi, I'm <span class="gradient-text">Shriyans<br> Mukherjee</span></h1>
+                <p class="subtitle large">I build engaging, performant, and accessible digital products.</p>
+                <div class="typed-wrapper"><span id="element"></span></div>
+                <div class="cta-buttons">
+                    <a href="#projects" class="cta-primary"><i class="fas fa-folder-open"></i><span>Portfolio</span></a>
+                    <a href="#contact" class="cta-secondary"><i class="fas fa-paper-plane"></i><span>Contact</span></a>
+                    <button class="cta-tertiary" data-open-resume>
+                        <i class="fas fa-file-alt"></i> Resume
+                    </button>
+                    <a class="cta-download" href="https://drive.google.com/uc?export=download&id=1Fu6C32aauiCaMElBEVT8KaA8wS8hyHqT" target="_blank" rel="noopener" download>
+                        <i class="fas fa-download"></i> Download
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat" data-counter target="25" data-suffix="+">
+                        <span class="number">0</span>
+                        <span class="label">Projects</span>
+                    </div>
+                    <div class="stat" data-counter target="5" data-suffix="+">
+                        <span class="number">0</span>
+                        <span class="label">Years Exp.</span>
+                    </div>
+                    <div class="stat" data-counter target="15" data-suffix="+">
+                        <span class="number">0</span>
+                        <span class="label">Tech Stack</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="portrait-wrap">
+                    <img src="bg.jpg" alt="Portrait of Shriyans" loading="lazy">
+                    <div class="glow"></div>
+                </div>
             </div>
         </div>
-        <div class="rightSection">
-            <img src="bg.jpg" alt="Professional headshot" loading="lazy">
-        </div>
+        <div class="hero-scroll-hint" aria-hidden="true"><span></span><span></span><span></span></div>
     </section>
+
+    <!-- Resume Modal -->
+    <div id="resume-modal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="resumeModalTitle">
+        <div class="modal-backdrop" data-close-resume></div>
+        <div class="modal-content" role="document">
+            <header class="modal-header">
+                <h2 id="resumeModalTitle">My Resume</h2>
+                <div class="modal-actions">
+                    <a class="btn small" href="https://drive.google.com/uc?export=download&id=1Fu6C32aauiCaMElBEVT8KaA8wS8hyHqT" target="_blank" rel="noopener" download title="Download Resume"><i class="fas fa-download"></i></a>
+                    <button class="btn small" data-close-resume aria-label="Close resume viewer"><i class="fas fa-times"></i></button>
+                </div>
+            </header>
+            <div class="modal-body">
+                <!-- Google Drive preview embed -->
+                <iframe title="Resume PDF preview" loading="lazy" src="https://drive.google.com/file/d/1Fu6C32aauiCaMElBEVT8KaA8wS8hyHqT/preview" allow="autoplay" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+            </div>
+            <footer class="modal-footer">
+                <a class="btn" href="https://drive.google.com/file/d/1Fu6C32aauiCaMElBEVT8KaA8wS8hyHqT/view?usp=sharing" target="_blank" rel="noopener">Open in new tab</a>
+                <button class="btn outline" data-close-resume>Close</button>
+            </footer>
+        </div>
+    </div>
 
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-grid">
-                <div class="about-item">
-                    <i class="fas fa-code"></i>
-                    <h3>Web Development</h3>
-                    <p>Creating responsive and user-friendly websites using modern technologies.</p>
+            <div class="section-head">
+                <h2>About <span class="accent-underline">Me</span></h2>
+                <p class="section-tagline">Multidisciplinary approach blending engineering, design, & storytelling.</p>
+            </div>
+            <div class="about-layout">
+                <div class="about-text glass">
+                    <h3 class="mini-heading">Who I Am</h3>
+                    <p>I build things that feel fast, consistent and thoughtfully designed. My approach blends <strong>engineering precision</strong> with a <strong>design systems</strong> mindset and the polish of <strong>modern motion & video</strong>. I enjoy reducing complexity, standardising UI patterns, and pushing for accessibility & performance without sacrificing personality.</p>
+                    <div class="about-stats" aria-label="Key impact metrics">
+                        <div class="a-stat">
+                            <span class="num">95+<span class="unit"> LHS</span></span>
+                            <span class="label">Core web vitals / Lighthouse scores achieved across major pages.</span>
+                        </div>
+                        <div class="a-stat">
+                            <span class="num">30%<span class="unit"> ↓</span></span>
+                            <span class="label">Reduction in UI build time via reusable component & token systems.</span>
+                        </div>
+                        <div class="a-stat">
+                            <span class="num">150+<span class="unit"> vids</span></span>
+                            <span class="label">Edited & produced assets improving engagement & clarity.</span>
+                        </div>
+                    </div>
+                    <ul class="bio-highlights">
+                        <li><i class="fas fa-check"></i> Obsessed with micro‑interactions that serve usability</li>
+                        <li><i class="fas fa-check"></i> Advocate for a11y & inclusive design culture</li>
+                        <li><i class="fas fa-check"></i> Pragmatic: ship, measure, refine</li>
+                    </ul>
+                    <div class="toolchain" aria-label="Core stack">
+                        <!-- Core Frontend -->
+                        <span class="tool-badge" title="React" aria-label="React"><i class="fab fa-react"></i></span>
+                        <span class="tool-badge" title="Next.js" aria-label="Next.js">Nx</span>
+                        <span class="tool-badge" title="TypeScript" aria-label="TypeScript">TS</span>
+                        <span class="tool-badge" title="Tailwind CSS" aria-label="Tailwind CSS">Tw</span>
+                        <!-- Runtime / Backend -->
+                        <span class="tool-badge" title="Node.js" aria-label="Node.js"><i class="fab fa-node"></i></span>
+                        <!-- Datastore -->
+                        <span class="tool-badge" title="MongoDB" aria-label="MongoDB">Mg</span>
+                        <!-- Design & Collaboration -->
+                        <span class="tool-badge" title="Figma" aria-label="Figma"><i class="fab fa-figma"></i></span>
+                        <span class="tool-badge" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></span>
+                    </div>
                 </div>
-                <div class="about-item">
-                    <i class="fas fa-video"></i>
-                    <h3>Video Editing</h3>
-                    <p>Crafting engaging visual stories through professional video editing.</p>
-                </div>
-                <div class="about-item">
-                    <i class="fas fa-palette"></i>
-                    <h3>UI/UX Design</h3>
-                    <p>Designing intuitive and beautiful user interfaces and experiences.</p>
+                <div class="about-cards">
+                    <div class="about-item gradient-border">
+                        <div class="icon-wrap"><i class="fas fa-code"></i></div>
+                        <h3>Engineering</h3>
+                        <p>Modern front-end architectures with scalable, modular components and clean semantics.</p>
+                        <div class="chip-row"><span class="chip">Next.js</span><span class="chip">TypeScript</span><span class="chip">REST</span></div>
+                    </div>
+                    <div class="about-item gradient-border">
+                        <div class="icon-wrap"><i class="fas fa-bezier-curve"></i></div>
+                        <h3>Design</h3>
+                        <p>User-centered workflows, design systems, and micro-interactions that improve retention.</p>
+                        <div class="chip-row"><span class="chip">Figma</span><span class="chip">UX</span><span class="chip">System</span></div>
+                    </div>
+                    <div class="about-item gradient-border">
+                        <div class="icon-wrap"><i class="fas fa-film"></i></div>
+                        <h3>Video Editing</h3>
+                        <p>Professional editing & motion design that amplify narrative, clarify onboarding and reinforce brand tone through subtle pacing, transitions & sound design.</p>
+                        <div class="chip-row"><span class="chip">Editing</span><span class="chip">Color</span><span class="chip">Motion</span></div>
+                    </div>
+                    <div class="about-item gradient-border principles">
+                        <div class="icon-wrap"><i class="fas fa-compass"></i></div>
+                        <h3>Principles</h3>
+                        <ul class="principles-list">
+                            <li><span>Clarity over cleverness</span></li>
+                            <li><span>Accessible by default</span></li>
+                            <li><span>Systems > one‑off hacks</span></li>
+                            <li><span>Performance as a feature</span></li>
+                            <li><span>Delight with purpose</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,27 +192,39 @@
     <!-- Experience Section -->
     <section id="experience" class="experience">
         <div class="container">
-            <h2>Experience</h2>
-            <div class="timeline">
+            <div class="section-head">
+                <h2>Experience</h2>
+                <p class="section-tagline">A concise snapshot of my professional journey.</p>
+            </div>
+            <div class="timeline smart">
                 <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Web Developer</h3>
-                        <p class="timeline-date">2021 - Present</p>
-                        <p>Led development of multiple web applications using modern frameworks and best practices.</p>
+                    <div class="timeline-content glass">
+                        <div class="role-head"><h3>Web Developer</h3><span class="badge">2021 – Present</span></div>
+                        <p>Leading development of responsive, accessible interfaces and performance optimizations across multiple products.</p>
+                        <ul class="tiny-list">
+                            <li>Implemented component library reducing UI build time by 30%.</li>
+                            <li>Improved lighthouse performance scores to 95+ across core pages.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>UI/UX Designer</h3>
-                        <p class="timeline-date">2019 - 2021</p>
-                        <p>Designed user interfaces and experiences for various digital products and platforms.</p>
+                    <div class="timeline-content glass">
+                        <div class="role-head"><h3>UI/UX Designer</h3><span class="badge">2019 – 2021</span></div>
+                        <p>Owned design strategy for web products focusing on flows, heuristics, and prototypes.</p>
+                        <ul class="tiny-list">
+                            <li>Increased task success rates by 22% via iterative testing.</li>
+                            <li>Created scalable design tokens foundation.</li>
+                        </ul>
                     </div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Video Editor</h3>
-                        <p class="timeline-date">2017 - 2019</p>
-                        <p>Created and edited video content for social media and marketing campaigns.</p>
+                    <div class="timeline-content glass">
+                        <div class="role-head"><h3>Video Editor</h3><span class="badge">2017 – 2019</span></div>
+                        <p>Produced compelling narrative content and refined visual storytelling techniques.</p>
+                        <ul class="tiny-list">
+                            <li>Delivered 150+ edited assets on tight timelines.</li>
+                            <li>Boosted engagement metrics through motion cues.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -110,44 +234,53 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="container">
-            <h2>Featured Projects</h2>
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="project1.jpg" alt="Project 1" loading="lazy">
+            <div class="section-head">
+                <h2>Featured <span class="accent-underline">Projects</span></h2>
+                <p class="section-tagline">Select work highlighting craftsmanship, scalability & UX thinking.</p>
+            </div>
+            <div class="project-grid new">
+                <article class="project-card elevate">
+                    <div class="project-media">
+                        <img src="project1.jpg" alt="ShopEase project preview" loading="lazy">
+                        <div class="overlay"><p>E‑commerce platform with clean UI and modular architecture.</p></div>
                     </div>
-                    <div class="project-content">
-                        <h3>ShopEase – E-commerce Platform</h3>
-                        <p>A simple e-commerce solution with modern UI and HTML, CSS and JS.</p>
-                        <div class="project-links">
-                            <a href="https://shop-ease-ecru.vercel.app/" class="project-link">View Live</a>
-                            <a href="https://github.com/shriyansX/ShopEase" class="project-link">Source Code</a>
+                    <div class="project-body">
+                        <h3>ShopEase</h3>
+                        <p class="small">Modern E‑commerce Platform</p>
+                        <div class="tag-row"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JS</span></div>
+                        <div class="project-actions">
+                            <a href="https://shop-ease-ecru.vercel.app/" class="btn small" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="https://github.com/shriyansX/ShopEase" class="btn outline small" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="project3.jpg" alt="Project 2" loading="lazy">
+                <article class="project-card elevate">
+                    <div class="project-media">
+                        <img src="project3.jpg" alt="Shortify project preview" loading="lazy">
+                        <div class="overlay"><p>URL shortener with analytics & clean dashboard experience.</p></div>
                     </div>
-                    <div class="project-content">
-                        <h3>ShorTify – URL Shortener</h3>
-                        <p>Simplify and shorten long URLs with ease. A sleek, full-stack application built with Next.js and MongoDB for seamless redirection and real-time analytics.</p>
-                        <div class="project-links">
-                            <a href="https://shortify-six-xi.vercel.app/" class="project-link">View Live</a>
-                            <a href="https://github.com/shriyansX/shortify" class="project-link">Source Code</a>
+                    <div class="project-body">
+                        <h3>ShorTify</h3>
+                        <p class="small">URL Redirection & Insights</p>
+                        <div class="tag-row"><span class="tag">Next.js</span><span class="tag">MongoDB</span><span class="tag">Full‑Stack</span></div>
+                        <div class="project-actions">
+                            <a href="https://shortify-six-xi.vercel.app/" class="btn small" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="https://github.com/shriyansX/shortify" class="btn outline small" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
-                <article class="project-card">
-                    <div class="project-image">
-                        <img src="project2.jpg" alt="Project 3" loading="lazy">
+                <article class="project-card elevate">
+                    <div class="project-media">
+                        <img src="project2.jpg" alt="Secura project preview" loading="lazy">
+                        <div class="overlay"><p>Password manager focused on privacy, encryption & smooth auth.</p></div>
                     </div>
-                    <div class="project-content">
-                        <h3>Secura – Password Manager</h3>
-                        <p>Securely store, organize, and access your credentials anytime, anywhere. A modern, full-stack password manager built with Next.js, TypeScript, and Clerk authentication for maximum privacy and seamless user experience.</p>
-                        <div class="project-links">
-                            <a href="https://secura-ten.vercel.app/" class="project-link">View Live</a>
-                            <a href="https://github.com/shriyansX/secura" class="project-link">Source Code</a>
+                    <div class="project-body">
+                        <h3>Secura</h3>
+                        <p class="small">Secure Credential Manager</p>
+                        <div class="tag-row"><span class="tag">Next.js</span><span class="tag">TypeScript</span><span class="tag">Clerk</span></div>
+                        <div class="project-actions">
+                            <a href="https://secura-ten.vercel.app/" class="btn small" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Live</a>
+                            <a href="https://github.com/shriyansX/secura" class="btn outline small" target="_blank" rel="noopener"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                 </article>
@@ -158,58 +291,85 @@
     <!-- Skills Section -->
     <section id="skills" class="skills">
         <div class="container">
-            <h2>Skills & Technologies</h2>
-            <ul class="skills-grid">
-                <li>HTML5</li>
-                <li>CSS3</li>
-                <li>JavaScript</li>
-                <li>React</li>
-                <li>Node.js</li>
-                <li>Python</li>
-                <li>Git</li>
-                <li>Figma</li>
-                <li>UI/UX Design</li>
-            </ul>
+            <div class="section-head">
+                <h2>Skills & Stack</h2>
+                <p class="section-tagline">A blend of front‑end engineering, product design, and tooling.</p>
+            </div>
+            <div class="technology-grid tech-flow" aria-label="Ordered technology stack">
+                <!-- Sequential progression: Core Web Fundamentals -->
+                <div class="tech-item numbered" data-seq="1" aria-label="HTML5"><div class="icon" data-brand="html"><i class="fab fa-html5"></i></div><span>HTML5</span></div>
+                <div class="tech-item numbered" data-seq="2" aria-label="CSS3"><div class="icon" data-brand="css"><i class="fab fa-css3-alt"></i></div><span>CSS3</span></div>
+                <div class="tech-item numbered" data-seq="3" aria-label="JavaScript"><div class="icon" data-brand="js"><svg viewBox="0 0 256 256"><rect width="256" height="256" rx="30" fill="#f7df1e"/><path d="M116 194c0 15-9 24-23 24-12 0-19-6-23-14l13-8c2 5 5 8 10 8 5 0 8-2 8-10v-54h15v54Zm29 1c4 7 9 11 17 11 7 0 11-3 11-8 0-6-5-8-12-11l-4-2c-12-5-21-11-21-25 0-12 9-21 23-21 10 0 18 3 23 13l-12 8c-3-5-6-7-11-7s-8 3-8 7c0 5 3 7 10 10l4 2c14 6 23 12 23 27 0 15-12 23-27 23-15 0-25-7-30-16l14-9Z"/></svg></div><span>JavaScript</span></div>
+                <div class="tech-item numbered" data-seq="4" aria-label="TypeScript"><div class="icon" data-brand="ts"><svg viewBox="0 0 256 256" role="img" aria-hidden="true"><rect width="256" height="256" rx="30" fill="#3178C6"/><path fill="#fff" d="M147 200v-17h31v-14h-31v-17h48v48h-48Zm-86-48v-15h64v15h-24v64h-16v-64H61Z"/></svg></div><span>TypeScript</span></div>
+                <!-- Front-End Frameworks & Styling Layers -->
+                <div class="tech-item numbered" data-seq="5" aria-label="React"><div class="icon" data-brand="react"><i class="fab fa-react"></i></div><span>React</span></div>
+                <div class="tech-item numbered" data-seq="6" aria-label="Next.js"><div class="icon" data-brand="next"><svg viewBox="0 0 128 128"><path fill="#fff" d="M64 0C28.7 0 0 28.7 0 64s28.7 64 64 64c11.4 0 22-3 31.2-8.2L47.6 47.6v32.2h-6.6V38h6.6l52 52c6.5-9.9 10.4-21.7 10.4-34.4C110 28.7 81.3 0 46 0h18Z"/></svg></div><span>Next.js</span></div>
+                <div class="tech-item numbered" data-seq="7" aria-label="Tailwind CSS"><div class="icon" data-brand="tailwind"><svg viewBox="0 0 128 128"><path fill="#38bdf8" d="M64 28c-17 0-27.5 8.5-31.5 25.5 6.3-8.5 13.7-11.7 22-9.6 4.8 1.2 8.2 4.6 12 8.4C72.7 59.4 79.1 66 95.5 66c17 0 27.5-8.5 31.5-25.5-6.3 8.5-13.7 11.7-22 9.6-4.8-1.2-8.2-4.6-12-8.4C86.8 34.6 80.4 28 64 28Zm-31.5 38C15.5 66 5 74.5 1 91.5c6.3-8.5 13.7-11.7 22-9.6 4.8 1.2 8.2 4.6 12 8.4 6.2 7.1 12.6 13.7 29 13.7 17 0 27.5-8.5 31.5-25.5-6.3 8.5-13.7 11.7-22 9.6-4.8-1.2-8.2-4.6-12-8.4-6.2-7.1-12.6-13.7-29-13.7Z"/></svg></div><span>Tailwind</span></div>
+                <!-- Backend Runtime / Framework -->
+                <div class="tech-item numbered" data-seq="8" aria-label="Node.js"><div class="icon" data-brand="node"><i class="fab fa-node"></i></div><span>Node.js</span></div>
+                <div class="tech-item numbered" data-seq="9" aria-label="Express"><div class="icon" data-brand="express"><svg viewBox="0 0 128 128"><text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" font-size="46" font-family="Arial" fill="#ffffff">ex</text></svg></div><span>Express</span></div>
+                <!-- Datastores -->
+                <div class="tech-item numbered" data-seq="10" aria-label="MongoDB"><div class="icon" data-brand="mongo"><svg viewBox="0 0 256 256"><path fill="#10aa50" d="M123 9s-7 73-38 96c0 0 7 102 38 142 31-40 38-142 38-142-31-23-38-96-38-96Z"/><path fill="#b8c4c2" d="M123 9s-7 73-38 96c0 0 7 102 38 142V9Z"/></svg></div><span>MongoDB</span></div>
+                <div class="tech-item numbered" data-seq="11" aria-label="MySQL"><div class="icon" data-brand="mysql"><svg viewBox="0 0 256 256"><path fill="#00758f" d="M54 182c7-2 14-5 21-4 6 0 11 3 16 6 6 4 12 8 19 10 8 2 16 0 23-3 7-4 12-11 17-17 5-7 9-15 15-21 6-7 13-12 22-13 4 0 8 0 11 2 5 3 7 9 8 14 1 5 2 11 5 16 2 3 6 6 10 7 2 0 4 1 6 0 2 0 4-1 5-3 1-3-1-6-3-8-3-3-8-4-11-7-4-4-5-9-6-14-1-7-2-14-7-19-4-5-10-7-16-8-9-1-18 1-26 5-7 4-13 9-19 15-5 6-10 13-15 19-4 5-8 11-15 14-6 2-13 1-19-2-6-3-11-8-17-11-9-4-18-4-27-2-5 1-10 3-15 5l3 10Z"/></svg></div><span>MySQL</span></div>
+                <!-- Other Languages -->
+                <div class="tech-item numbered" data-seq="12" aria-label="Python"><div class="icon" data-brand="py"><svg viewBox="0 0 256 255"><linearGradient id="pa" x1="12.96" x2="235.77" y1="12.96" y2="235.77" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#387eb8"/><stop offset="1" stop-color="#366994"/></linearGradient><linearGradient id="pb" x1="108.32" x2="316.92" y1="105.1" y2="313.71" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#ffe052"/><stop offset="1" stop-color="#ffc331"/></linearGradient><path fill="url(#pa)" d="M127.9 0c-64.5 0-60.5 28-60.5 28l.1 29.1h61.6v8.7H45.6S0 61.7 0 127.1c0 65.3 39.8 63.1 39.8 63.1h23.8v-33.5s-1.3-39.8 39.2-39.8h67.5s37.9.6 37.9-36.6V36.7S213.6 0 127.9 0ZM92.5 20.3c6.7 0 12.2 5.5 12.2 12.3 0 6.7-5.5 12.2-12.2 12.2-6.8 0-12.3-5.5-12.3-12.2 0-6.8 5.5-12.3 12.3-12.3Z"/><path fill="url(#pb)" d="M128.1 255.2c64.5 0 60.5-28 60.5-28l-.1-29.2h-61.6v-8.6h83.5s45.7 4.1 45.7-61.3c0-65.4-39.8-63.2-39.8-63.2h-23.8v33.5s1.3 39.8-39.2 39.8h-67.5s-37.9-.6-37.9 36.6v44.1s-5.2 36.3 80.2 36.3Zm35.4-20.2c-6.7 0-12.2-5.5-12.2-12.3 0-6.7 5.5-12.2 12.2-12.2 6.8 0 12.3 5.5 12.3 12.2 0 6.8-5.5 12.3-12.3 12.3Z"/></svg></div><span>Python</span></div>
+                <div class="tech-item numbered" data-seq="13" aria-label="C Language"><div class="icon" data-brand="c"><svg viewBox="0 0 128 128"><path fill="#283593" d="M63.9 0 5.7 32v64l58.2 32 58.2-32V32L63.9 0Z"/><path fill="#fff" d="M64 23 31 41v46l33 18 33-18V41L64 23Zm0 13 21 12v32L64 92 43 80V48l21-12Z"/></svg></div><span>C</span></div>
+                <!-- Platform / Deployment / Auth -->
+                <div class="tech-item numbered" data-seq="14" aria-label="Vercel"><div class="icon" data-brand="vercel"><svg viewBox="0 0 256 256"><path fill="#fff" d="m128 32 112 192H16z"/></svg></div><span>Vercel</span></div>
+                <div class="tech-item numbered" data-seq="15" aria-label="Clerk"><div class="icon" data-brand="clerk"><svg viewBox="0 0 256 256"><rect width="256" height="256" rx="56" fill="#fff"/><path d="M128 64a64 64 0 1 0 0 128 64 64 0 0 0 0-128Zm0 104a40 40 0 1 1 0-80 40 40 0 0 1 0 80Z" fill="#111"/></svg></div><span>Clerk</span></div>
+                <div class="tech-item numbered" data-seq="16" aria-label="Stream"><div class="icon" data-brand="stream"><svg viewBox="0 0 256 256"><path fill="#0d8af0" d="M128 16 16 64l112 48 96-41.1V144l32-13.7V64L128 16Zm0 96L32 72v80l96 56 96-56V96l-96 40Z"/></svg></div><span>Stream</span></div>
+                <!-- Collaboration & API Tools -->
+                <div class="tech-item numbered" data-seq="17" aria-label="Git"><div class="icon" data-brand="git"><i class="fas fa-code-branch"></i></div><span>Git</span></div>
+                <div class="tech-item numbered" data-seq="18" aria-label="GitHub"><div class="icon" data-brand="github"><i class="fab fa-github"></i></div><span>GitHub</span></div>
+                <div class="tech-item numbered" data-seq="19" aria-label="Postman"><div class="icon" data-brand="postman"><svg viewBox="0 0 256 256"><circle cx="128" cy="128" r="120" fill="#ff6c37"/><path fill="#fff" d="M176 144 112 80l-16 16 64 64h16v16l16-16v-16Z"/></svg></div><span>Postman</span></div>
+                <!-- Design & Experience -->
+                <div class="tech-item numbered" data-seq="20" aria-label="Figma"><div class="icon" data-brand="figma"><i class="fab fa-figma"></i></div><span>Figma</span></div>
+                <div class="tech-item numbered" data-seq="21" aria-label="UI / UX"><div class="icon" data-brand="uiux"><svg viewBox="0 0 64 64"><rect x="8" y="8" width="48" height="48" rx="10" fill="#8b5cf6"/><circle cx="26" cy="26" r="6" fill="#fff"/><path d="M36 38c0-4 4-8 8-8" stroke="#fff" stroke-width="4" stroke-linecap="round" fill="none"/></svg></div><span>UI / UX</span></div>
+                <div class="tech-item numbered" data-seq="22" aria-label="Motion"><div class="icon" data-brand="motion"><i class="fas fa-play"></i></div><span>Motion</span></div>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2>Get in Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to new opportunities and collaborations.</p>
-                    <div class="social-links">
-                        <a href="https://github.com/shriyansX" aria-label="GitHub Profile">
-                            <i class="fab fa-github"></i> GitHub
-                        </a>
-                        <a href="https://www.linkedin.com/in/shriyansmukherjee/" aria-label="LinkedIn Profile">
-                            <i class="fab fa-linkedin"></i> LinkedIn
-                        </a>
-                        <a href="https://x.com/SHRIYANSMUKHER1" aria-label="Twitter Profile">
-                            <i class="fab fa-twitter"></i> Twitter
-                        </a>
-                        <a href="mailto:your.shriyans696@gmail.com" aria-label="Email">
-                            <i class="fas fa-envelope"></i> Email
-                        </a>
+            <div class="section-head">
+                <h2>Get In Touch</h2>
+                <p class="section-tagline">Open to freelance, full‑time roles & collaborative projects.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-panel glass">
+                    <h3>Connect</h3>
+                    <p>If my work resonates, let's explore how we can build something impactful.</p>
+                    <div class="social-links grid">
+                        <a href="https://github.com/shriyansX" aria-label="GitHub" class="social-btn"><i class="fab fa-github"></i><span>GitHub</span></a>
+                        <a href="https://www.linkedin.com/in/shriyansmukherjee/" aria-label="LinkedIn" class="social-btn"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+                        <a href="https://x.com/SHRIYANSMUKHER1" aria-label="Twitter" class="social-btn"><i class="fab fa-twitter"></i><span>Twitter</span></a>
+                        <a href="mailto:your.shriyans696@gmail.com" aria-label="Email" class="social-btn"><i class="fas fa-envelope"></i><span>Email</span></a>
+                    </div>
+                    <div class="quick-action">
+                        <button data-open-resume class="btn outline small w-full"><i class="fas fa-file"></i> View Resume</button>
                     </div>
                 </div>
-                <form id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                <form id="contact-form" class="contact-form glass" novalidate>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" autocomplete="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" autocomplete="email" required>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit">Send Message</button>
+                    <div class="form-footer">
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> <span>Send Message</span></button>
+                        <p class="form-note">I typically respond within 24 hours.</p>
+                    </div>
                 </form>
             </div>
         </div>
