@@ -682,66 +682,82 @@ nav ul li button.link-like:hover::after {
 
 /* Sponsors Section */
 .sponsors {
-    padding: 100px 0;
-    background: var(--bg-secondary);
+  padding: 80px 0;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.sponsors .section-head {
+  margin-bottom: 50px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.section-tagline {
+  font-size: 1.1rem;
+  color: #555;
+  margin-top: 10px;
 }
 
 .sponsor-cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
 }
 
 .sponsor-card {
-    background: var(--bg-primary);
-    padding: 2rem 1.5rem;
-    border-radius: 18px;
-    text-align: center;
-    border: 1px solid var(--border);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  max-width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .sponsor-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 14px 30px -8px var(--box-shadow);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .sponsor-card img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 1rem;
-    border: 2px solid var(--accent);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .sponsor-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
-    color: var(--accent);
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .sponsor-card p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 1.5rem;
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 20px;
 }
 
 .sponsor-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 30px;
-    font-weight: 500;
-    text-decoration: none;
-    background: var(--accent);
-    color: var(--bg-primary);
-    transition: all 0.3s ease;
+  display: inline-block;
+  padding: 10px 25px;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.3s;
 }
 
 .sponsor-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px var(--box-shadow);
+  background: linear-gradient(90deg, #ee0979, #ff6a00);
 }
 
 /* Responsive */
@@ -1067,3 +1083,4 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     75% { transform: translateX(5px); }
 
 }
+
