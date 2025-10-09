@@ -683,7 +683,7 @@ nav ul li button.link-like:hover::after {
 /* Sponsors Section */
 .sponsors {
   padding: 80px 0;
-  background-color: #f9f9f9;
+  background: var(--bg-secondary);
   text-align: center;
 }
 
@@ -691,17 +691,18 @@ nav ul li button.link-like:hover::after {
   margin-bottom: 50px;
 }
 
-.gradient-text {
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
+.sponsors .gradient-text {
+  background: linear-gradient(90deg, var(--accent), #9d7bff);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-size: 2.5rem;
   font-weight: 700;
 }
 
-.section-tagline {
+.sponsors .section-tagline {
   font-size: 1.1rem;
-  color: #555;
+  color: var(--text-secondary);
   margin-top: 10px;
 }
 
@@ -713,17 +714,18 @@ nav ul li button.link-like:hover::after {
 }
 
 .sponsor-card {
-  background-color: #fff;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
   border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px var(--box-shadow);
   padding: 30px 20px;
   max-width: 250px;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sponsor-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 15px 35px var(--box-shadow);
 }
 
 .sponsor-card img {
@@ -736,59 +738,30 @@ nav ul li button.link-like:hover::after {
 .sponsor-card h3 {
   font-size: 1.3rem;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--text-primary);
 }
 
 .sponsor-card p {
   font-size: 0.95rem;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
 .sponsor-btn {
   display: inline-block;
   padding: 10px 25px;
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
-  color: #fff;
+  background: linear-gradient(90deg, var(--accent), #9d7bff);
+  color: var(--bg-primary);
   font-weight: 600;
   border-radius: 50px;
   text-decoration: none;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
 }
 
 .sponsor-btn:hover {
-  background: linear-gradient(90deg, #ee0979, #ff6a00);
-}
-
-/* 🌙 Dark Mode Adjustments */
-body.dark .sponsors {
-  background-color: #0d1117; /* match GitHub dark tone */
-}
-
-body.dark .section-tagline {
-  color: #ccc;
-}
-
-body.dark .sponsor-card {
-  background-color: #1e1e1e;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-}
-
-body.dark .sponsor-card h3 {
-  color: #fff;
-}
-
-body.dark .sponsor-card p {
-  color: #bbb;
-}
-
-body.dark .sponsor-btn {
-  background: linear-gradient(90deg, #ff6a00, #ee0979);
-  color: #fff;
-}
-
-body.dark .sponsor-btn:hover {
-  background: linear-gradient(90deg, #ee0979, #ff6a00);
+  background: linear-gradient(90deg, #9d7bff, var(--accent));
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -5px var(--box-shadow);
 }
 
 /* Responsive */
@@ -796,42 +769,14 @@ body.dark .sponsor-btn:hover {
     .sponsor-card {
         padding: 1.5rem 1rem;
     }
-}
-
-/* 🌙 Dark Mode Styles for Sponsors Section */
-body[data-theme="dark"] .sponsors {
-  background-color: #121212;
-}
-
-body[data-theme="dark"] .sponsor-card {
-  background-color: #1e1e1e;
-  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
-}
-
-body[data-theme="dark"] .sponsor-card h3 {
-  color: #f0f0f0;
-}
-
-body[data-theme="dark"] .sponsor-card p {
-  color: #cccccc;
-}
-
-body[data-theme="dark"] .section-tagline {
-  color: #aaa;
-}
-
-body[data-theme="dark"] .gradient-text {
-  background: linear-gradient(90deg, #ff9966, #ff5e62);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-body[data-theme="dark"] .sponsor-btn {
-  background: linear-gradient(90deg, #ff5e62, #ff9966);
-}
-
-body[data-theme="dark"] .sponsor-btn:hover {
-  background: linear-gradient(90deg, #ff9966, #ff5e62);
+    
+    .sponsor-cards {
+        gap: 20px;
+    }
+    
+    .sponsors .gradient-text {
+        font-size: 2rem;
+    }
 }
 
 
@@ -1151,6 +1096,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     75% { transform: translateX(5px); }
 
 }
-
 
 
