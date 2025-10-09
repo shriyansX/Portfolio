@@ -798,6 +798,43 @@ body.dark .sponsor-btn:hover {
     }
 }
 
+/* 🌙 Dark Mode Styles for Sponsors Section */
+body[data-theme="dark"] .sponsors {
+  background-color: #121212;
+}
+
+body[data-theme="dark"] .sponsor-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+}
+
+body[data-theme="dark"] .sponsor-card h3 {
+  color: #f0f0f0;
+}
+
+body[data-theme="dark"] .sponsor-card p {
+  color: #cccccc;
+}
+
+body[data-theme="dark"] .section-tagline {
+  color: #aaa;
+}
+
+body[data-theme="dark"] .gradient-text {
+  background: linear-gradient(90deg, #ff9966, #ff5e62);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body[data-theme="dark"] .sponsor-btn {
+  background: linear-gradient(90deg, #ff5e62, #ff9966);
+}
+
+body[data-theme="dark"] .sponsor-btn:hover {
+  background: linear-gradient(90deg, #ff9966, #ff5e62);
+}
+
+
 
 /* Contact Section */
 .contact {
@@ -1114,5 +1151,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     75% { transform: translateX(5px); }
 
 }
+
 
 
