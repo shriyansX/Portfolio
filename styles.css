@@ -760,6 +760,37 @@ nav ul li button.link-like:hover::after {
   background: linear-gradient(90deg, #ee0979, #ff6a00);
 }
 
+/* 🌙 Dark Mode Adjustments */
+body.dark .sponsors {
+  background-color: #0d1117; /* match GitHub dark tone */
+}
+
+body.dark .section-tagline {
+  color: #ccc;
+}
+
+body.dark .sponsor-card {
+  background-color: #1e1e1e;
+  box-shadow: 0 10px 25px rgba(255, 255, 255, 0.05);
+}
+
+body.dark .sponsor-card h3 {
+  color: #fff;
+}
+
+body.dark .sponsor-card p {
+  color: #bbb;
+}
+
+body.dark .sponsor-btn {
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  color: #fff;
+}
+
+body.dark .sponsor-btn:hover {
+  background: linear-gradient(90deg, #ee0979, #ff6a00);
+}
+
 /* Responsive */
 @media(max-width:700px){
     .sponsor-card {
@@ -1083,4 +1114,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outlin
     75% { transform: translateX(5px); }
 
 }
+
 
